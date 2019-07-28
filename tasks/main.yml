@@ -1,0 +1,22 @@
+---
+# Include variables and define needed variables.
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+# Add qwe to a system
+- name: add my user
+  user:
+   name: "{{ username }}"
+   comment: user
+   groups: "{{ add_to_groups }}"
+   append: yes
+   shell: "{{ shell }}"
+   state: "{{ user_state }}"
+   password: "{{ password_var }}"
+
+- name: Set authorized key taken from file
+  authorized_key:
+    user: "{{ username }}"
+    state: "{{ user_state }}"
+    key: "{{ ssh_key_path }}"
+    manage_dir: yes
