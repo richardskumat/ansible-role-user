@@ -17,6 +17,11 @@ install:
   - pip install ansible molecule docker
 
 before_script:
+  # create ssh disposable ssh keypair for this test run
+  - ssh-keygen -f id_rsa -P ''
+  - mkdir -p ~/.ssh
+  - chmod 0700 ~/.ssh
+  - cp id_rsa.pub ~/.ssh
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
   - mv $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME
@@ -24,11 +29,11 @@ before_script:
   - docker -v
   - id
 
+
 script:
   # Run tests.
   - molecule converge || true
   - molecule test || true
-  - ansible-galaxy install $GALAXY_USERNAME.$GALAXY_ROLENAME
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
