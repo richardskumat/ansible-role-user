@@ -16,7 +16,7 @@
 
 - name: Set authorized key taken from file
   authorized_key:
-    user: "{{ username }}"
-    state: "{{ user_state }}"
-    key: "{{ ssh_key_path }}"
-    manage_dir: yes
+   user: "{{ username }}"
+   state: "{{ user_state }}"
+   key: "{{ ssh_key_path }}"
+   manage_dir: yes
