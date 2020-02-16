@@ -1,22 +1,30 @@
 ---
 # Include variables and define needed variables.
-- name: Include OS-specific variables.
+- name: Include Redhat/Debian specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
-# Add qwe to a system
-- name: add my user
+- name: Add users if defined
   user:
-   name: "{{ username }}"
-   comment: user
-   groups: "{{ add_to_groups }}"
-   append: yes
-   shell: "{{ shell }}"
-   state: "{{ user_state }}"
-   password: "{{ password_var }}"
+   name: "{{ item.name | default(item) }}"
+   append: "{{ item.append | default(omit) }}"
+   comment: "{{ item.comment | default(omit) }}"
+   create_home: "{{ item.create_home | default('yes') }}"
+   generate_ssh_key: "{{ item.generate_ssh_key | default('no') }}"
+   groups: "{{ item.groups | default(omit) }}"
+   password: "{{ item.password | default(omit) }}"
+   shell: "{{ item.shell | default(omit) }}"
+   skeleton: "{{ item.skeleton | default(omit) }}"
+   update_password: "{{ item.update_password | default('always') }}"
+   state: "{{ item.state | default(present) }}"
+  with_items: "{{ defined_users }}"
 
 - name: Set authorized key taken from file
   authorized_key:
-   user: "{{ username }}"
-   state: "{{ user_state }}"
-   key: "{{ ssh_key_path }}"
-   manage_dir: yes
+   user: "{{ item.name | default(item) }}"
+   state: "{{ item.state | default(present) }}"
+   # this fails in molecule docker tests because the image I use
+   # has no ssh key in it
+   # key: "{{ item.ssh_key_path | default(lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub')) }}"
+   key: "{{ item.ssh_key_path | default(omit) }}"
+   manage_dir: "{{ item.manage_dir | default(yes) }}"
+  with_items: "{{ defined_users }}"

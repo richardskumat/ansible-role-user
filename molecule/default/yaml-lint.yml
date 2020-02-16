@@ -2,6 +2,6 @@
 extends: default
 rules:
   line-length:
-    max: 120
+    max: 600
   truthy: disable
 level: warning

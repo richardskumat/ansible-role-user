@@ -3,3 +3,20 @@
   hosts: all
   roles:
     - role: richardskumat.ansible_role_user
+  vars:
+    defined_users:
+      - name: username
+        append: 'yes'
+        comment: 'user'
+        create_home: 'yes'
+        generate_ssh_key: 'no'
+        groups: "{{ sudo_groupname }}"
+        password: "$6$JE/i1W/m6t3$y2GRMvAUseTxaqN1aSXKEfShb84oCblPGqYYhvrPyEvoD6EVZOfLrFQ.CkYrS8YlygXRA9pivlyB8PkSs6h9u1"
+        shell: '/bin/bash'
+        skeleton: ''
+        state: 'present'
+        update_password: 'always'
+        # just as a note, gitlab.com has the same functionality
+        # at https://gitlab.com/username.keys
+        ssh_key_path: https://github.com/richardskumat.keys
+        manage_dir: 'yes'

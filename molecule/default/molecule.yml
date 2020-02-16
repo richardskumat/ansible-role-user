@@ -9,18 +9,11 @@ lint:
     config-file: molecule/default/yaml-lint.yml
 platforms:
   - name: instance
-    image: "${MOLECULE_DISTRO:-debian:9}"
+    image: "${MOLECULE_DISTRO:-debian:10}"
     pull: yes
-    groups:
-      - user
 provisioner:
   name: ansible
   log: true
-  inventory:
-    group_vars:
-      user:
-        username: qwe
-        password_var: hunter2
   lint:
     name: ansible-lint
 scenario:
