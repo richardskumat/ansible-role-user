@@ -50,4 +50,21 @@ Author Information
 
 Richard Skumat
 
-https://github.com/richardskumat
+Links
+-----
+
+Gitlab
+
+https://gitlab.com/richardskumat/ansible-role-user
+
+Gitlab pipelines
+
+https://gitlab.com/richardskumat/ansible-role-user/pipelines
+
+Github
+
+https://github.com/richardskumat/ansible-role-user
+
+Travisci
+
+https://travis-ci.org/richardskumat/ansible-role-user
