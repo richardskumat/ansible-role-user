@@ -1,6 +1,6 @@
 ---
 # based on https://github.com/geerlingguy/ansible-role-mysql/blob/master/.travis.yml for now
-language: python
+language: python3
 services: docker
 
 env:
@@ -18,7 +18,7 @@ env:
 
 install:
   # Install test dependencies.
-  - pip install ansible molecule docker
+  - pip3 install ansible==2.9 molecule==3.0 docker ansible-lint==4.2
 
 before_script:
   # create ssh disposable ssh keypair for this test run
