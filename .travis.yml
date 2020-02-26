@@ -18,14 +18,9 @@ env:
 
 install:
   # Install test dependencies.
-  - pip3 install ansible==2.9 molecule==3.0 docker ansible-lint==4.2
+  - pip3 install ansibl molecule docker ansible-lint
 
 before_script:
-  # create ssh disposable ssh keypair for this test run
-  - ssh-keygen -f id_rsa -P ''
-  - mkdir -p ~/.ssh
-  - chmod 0700 ~/.ssh
-  - cp id_rsa.pub ~/.ssh
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
   - mv $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME

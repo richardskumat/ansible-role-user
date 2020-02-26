@@ -16,12 +16,6 @@ stages:
   - test
 
 before_script:
-  # create ssh disposable ssh keypair for this test run
-  - ssh-keygen -f id_rsa -P ''
-  - mkdir -p ~/.ssh
-  - chmod 0700 ~/.ssh
-  - cp id_rsa.pub ~/.ssh
-  - docker info
   - ansible --version
   - molecule --version
   - cd ..
