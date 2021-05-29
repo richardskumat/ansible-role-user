@@ -17,6 +17,7 @@
    update_password: "{{ item.update_password | default('always') }}"
    state: "{{ item.state | default(present) }}"
   with_items: "{{ defined_users }}"
+  no_log: true
 
 - name: Set authorized key taken from file
   authorized_key:
