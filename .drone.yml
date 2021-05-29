@@ -9,5 +9,5 @@ steps:
     commands:
       - ls -lah
       - pwd
-      - mkdir -p ~/.ansible/roles && cp -aR "$(pwd)" ~/.ansible/roles
+      - mkdir -p ~/.ansible/roles && cp -aR "$(pwd)" ~/.ansible/roles/richardskumat.ansible_role_user
       - molecule test
