@@ -7,4 +7,6 @@ steps:
   - name: local build
     image: qwe1/dind-ansible-molecule:2.9-root
     commands:
+      - ls -lah
+      - pwd
       - molecule test
