@@ -16,6 +16,6 @@ steps:
       - molecule test
 
 volumes:
-- name: dsock
-  host:
-    path: /var/run/docker.sock
+  - name: dsock
+    host:
+      path: /var/run/docker.sock
