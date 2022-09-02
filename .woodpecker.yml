@@ -5,7 +5,7 @@ name: default
 
 steps:
   - name: local build
-    image: qwe1/dind-ansible-molecule:2.9-root
+    image: qwe1/dind-ansible-molecule:root
     volumes:
       - name: dsock
         path: /var/run/docker.sock
