@@ -1,10 +1,10 @@
 ---
 # Include variables and define needed variables.
 - name: Include Redhat/Debian specific variables.
-  include_vars: "{{ ansible_os_family }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Add users if defined
-  user:
+  ansible.builtin.user:
    name: "{{ item.name | default(item) }}"
    append: "{{ item.append | default(omit) }}"
    comment: "{{ item.comment | default(omit) }}"
@@ -20,7 +20,7 @@
   no_log: true
 
 - name: Set authorized key taken from file
-  authorized_key:
+  ansible.posix.authorized_key:
    user: "{{ item.name | default(item) }}"
    state: "{{ item.state | default(present) }}"
    # this fails in molecule docker tests because the image I use
