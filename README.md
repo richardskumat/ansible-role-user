@@ -27,7 +27,7 @@ defined_users: []
 The main task file takes a list of defined users and tries to configure it
 on the system.
 
-An example playbook is in molecule/default/playbook.yml.
+An example playbook is in molecule/default/converge.yml.
 
 
 Dependencies
@@ -38,7 +38,7 @@ None.
 Example Playbook
 ----------------
 
-There's an example playbook in molecule/default/playbook.yml.
+There's an example playbook in molecule/default/converge.yml.
 
 License
 -------
