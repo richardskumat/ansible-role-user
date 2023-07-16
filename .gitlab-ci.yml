@@ -45,7 +45,7 @@ test_f38:
 test_el9:
   stage: test
   variables:
-    MOLECULE_DISTRO: "registry.access.redhat.com/ubi9"
+    # MOLECULE_DISTRO: "registry.access.redhat.com/ubi9"
+    MOLECULE_DISTRO: "almalinux:9"
   script:
     - molecule test
-    
