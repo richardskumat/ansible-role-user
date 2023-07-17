@@ -38,7 +38,7 @@ test_d12:
 test_f38:
   stage: test
   variables:
-    MOLECULE_DISTRO: "fedora:38"
+    MOLECULE_DISTRO: "docker.io/qwe1/docker-el:f38"
   script:
     - molecule test
 
@@ -46,6 +46,7 @@ test_el9:
   stage: test
   variables:
     # MOLECULE_DISTRO: "registry.access.redhat.com/ubi9"
-    MOLECULE_DISTRO: "almalinux:9"
+    # MOLECULE_DISTRO: "almalinux:9"
+    MOLECULE_DISTRO: "docker.io/qwe1/docker-el:al9"
   script:
     - molecule test
