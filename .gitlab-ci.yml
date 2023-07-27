@@ -12,6 +12,7 @@ services:
   - docker:dind
 
 stages:
+  - lint
   - test
 
 before_script:
