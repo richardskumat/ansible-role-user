@@ -21,6 +21,11 @@ before_script:
   - cp -aR $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME
   - cd $GALAXY_USERNAME.$GALAXY_ROLENAME
 
+lint:
+  stage: lint
+  script:
+    - ansible-lint
+
 test_d11:
   stage: test
   variables:
@@ -45,8 +50,6 @@ test_f38:
 test_el9:
   stage: test
   variables:
-    # MOLECULE_DISTRO: "registry.access.redhat.com/ubi9"
-    # MOLECULE_DISTRO: "almalinux:9"
     MOLECULE_DISTRO: "docker.io/qwe1/docker-el:al9"
   script:
     - molecule test
